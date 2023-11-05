@@ -1,13 +1,19 @@
-from ringBell import *
 import main
+import music
+from microbit import *
 def reportResult(result):
-    if result:
+    if (result):
         #correct answer behavior
-        #lcd says correct!
-        ringBell();
+        #use a music function to celebrate
+        speaker.off()
+        music.POWER_UP
+        main.l.displayIfDiff(["Correct!"])
     else:
         #incorrect result behavior
-        print("wrong")
+        main.l.displayIfDiff(["Incorrect :("])
         #speaker plays incorrect ans tone
-        #lcd says incorrect
-    problemInProgress = False
+        speaker.off()
+        music.POWER_DOWN
+    sleep(3200)
+        
+    main.problemInProgress = False
